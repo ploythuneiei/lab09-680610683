@@ -50,10 +50,10 @@ router.get("/", authenticateToken, checkRoles,(req: CustomRequest, res: Response
   };
 })
 
-router.post("/", authenticateToken, checkRoleStudent, async (req: CustomRequest, res: Response) => {
+router.post("/", authenticateToken, checkRoleStudent, (req: CustomRequest, res: Response) => {
   try{
     const payload = req.user;
-    const body = (await req.body) as Enrollment;
+    const body = req.body as Enrollment;
     
       // validate req.body with predefined validator
       const result = zEnrollmentBody.safeParse(body);
