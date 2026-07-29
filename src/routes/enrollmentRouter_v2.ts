@@ -64,7 +64,7 @@ router.post("/", authenticateToken, checkRoleStudent, async (req: CustomRequest,
         });
       }
 
-    //check duplicate studentId
+    //check duplicate enrollment
     const found = enrollments.find(
       (e) => e.courseId === body.courseId && e.studentId === payload?.studentId
     );
@@ -75,7 +75,7 @@ router.post("/", authenticateToken, checkRoleStudent, async (req: CustomRequest,
       });
     }
 
-    // add new student
+    // add new enrollment
     const new_enrollment: Enrollment = {
     studentId: payload?.studentId!,
     courseId: body.courseId,
